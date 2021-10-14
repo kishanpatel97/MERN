@@ -20,6 +20,12 @@ const Form = (props) => {
         we need to create a new array and spread out the current values first
         then we add the new color as the last element in the array
         */
+
+        /*
+        1. using function passed down from App
+        2. making copy of State passed down from App
+        3. updating copied State
+        */
         setBoxColorArray( [ ...boxColorArray, color ] );
     }
 
