@@ -1,0 +1,578 @@
+kishanpatel@Kishan-Patels-MacBook-Pro ~ % mongo
+MongoDB shell version v5.0.3
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("1c5acf33-e448-4b9a-b30d-96481cdfa554") }
+MongoDB server version: 5.0.3
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+	https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+        2021-10-28T16:55:59.081-07:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+>
+>
+>
+> show collections\
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shellhelp2):1:39
+> show collections
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use first_db
+switched to db first_db
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use admin
+switched to db admin
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use first_db
+switched to db first_db
+> db
+first_db
+> db.first_db.insert(\{name: "pen","year_bought":"2020"\})\
+uncaught exception: SyntaxError: invalid escape sequence :
+@(shell):1:19
+> db.first_db.insert(\{name: "pen","year_bought":"2020"\})
+uncaught exception: SyntaxError: invalid escape sequence :
+@(shell):1:19
+> db.first_db.insert(\{name: "pen", "year_bought":"2020"\})\
+uncaught exception: SyntaxError: invalid escape sequence :
+@(shell):1:19
+> db.first_db.insert(\{name: "pen", "year_bought":"2020"\})\
+uncaught exception: SyntaxError: invalid escape sequence :
+@(shell):1:19
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> show dbs
+admin        0.000GB
+config       0.000GB
+first_db     0.000GB
+local        0.000GB
+my_first_db  0.000GB
+> use my_first_db
+switched to db my_first_db
+> quit
+function quit() {
+    [native code]
+}
+> exit
+bye
+kishanpatel@Kishan-Patels-MacBook-Pro ~ % mongo
+MongoDB shell version v5.0.3
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("e9444a87-3be9-40d0-8dc8-8bfea4fa4cea") }
+MongoDB server version: 5.0.3
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+We recommend you begin using "mongosh".
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+Mongo-Hacker 0.1.1
+---
+The server generated these startup warnings when booting:
+        2021-10-28T16:55:59.081-07:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) test> use my_first_db
+switched to db my_first_db
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.deleteMany({"state": "California"})
+{
+  "acknowledged": true,
+  "deletedCount": 2
+}
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42bf4d7d8b4aff03759d"),
+  "name": "Bill Gates",
+  "state": "Washington",
+  "lucky_number": 6,
+  "birthday": {
+    "month": 10,
+    "day": 16,
+    "year": 1993
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ]
+}
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ]
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ]
+}
+Fetched 3 documents in 5ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.remove({name: "Bill Gates"})
+Removed 1 document(s) in 6ms
+WriteResult({
+  "nRemoved": 1
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ]
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ]
+}
+Fetched 2 documents in 3ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.remove({lucky_number: {$gt: 5}}, {justOne: true})
+Removed 0 document(s) in 5ms
+WriteResult({
+  "nRemoved": 0
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find(\{\})\
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shellhelp1):1:51
+error2:SyntaxError: "" literal not terminated before end of script :
+@(shellhelp1):1:51
+
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find(\{\})\
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shellhelp1):1:51
+error2:SyntaxError: "" literal not terminated before end of script :
+@(shellhelp1):1:51
+
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ]
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ]
+}
+Fetched 2 documents in 5ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.insert({name: "Joe Smith", state: "Washington", lucky_number: 7, birthday: {month: 4, day: 4, year:1995}})
+Inserted 1 document(s) in 4ms
+WriteResult({
+  "nInserted": 1
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.insert({name: "Joe Smith", state: "Washington", lucky_number: 9, birthday: {month: 4, day: 4, year:1995}})
+Inserted 1 document(s) in 4ms
+WriteResult({
+  "nInserted": 1
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.remove({lucky_number: {$gt: 5}}, {justOne: true})
+Removed 1 document(s) in 5ms
+WriteResult({
+  "nRemoved": 1
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ]
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ]
+}
+{
+  "_id": ObjectId("617b45e5bdf4607a999401d7"),
+  "name": "Joe Smith",
+  "state": "Washington",
+  "lucky_number": 9,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  }
+}
+Fetched 3 documents in 5ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.updateMany({}, { $set: {belts: 0} } )
+{
+  "acknowledged": true,
+  "matchedCount": 3,
+  "modifiedCount": 3
+}
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ],
+  "belts": 0
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ],
+  "belts": 0
+}
+{
+  "_id": ObjectId("617b45e5bdf4607a999401d7"),
+  "name": "Joe Smith",
+  "state": "Washington",
+  "lucky_number": 9,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "belts": 0
+}
+Fetched 3 documents in 4ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.update( {state: "Washington"}, { $inc: {belts: 1} } )
+Updated 1 existing document(s) in 4ms
+WriteResult({
+  "nMatched": 1,
+  "nUpserted": 0,
+  "nModified": 1
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ],
+  "belts": 1
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ],
+  "belts": 0
+}
+{
+  "_id": ObjectId("617b45e5bdf4607a999401d7"),
+  "name": "Joe Smith",
+  "state": "Washington",
+  "lucky_number": 9,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "belts": 0
+}
+Fetched 3 documents in 4ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.updateMany( {state: "Washington"}, { $inc: {belts: 1} } )
+{
+  "acknowledged": true,
+  "matchedCount": 2,
+  "modifiedCount": 2
+}
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ],
+  "belts": 2
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ],
+  "belts": 0
+}
+{
+  "_id": ObjectId("617b45e5bdf4607a999401d7"),
+  "name": "Joe Smith",
+  "state": "Washington",
+  "lucky_number": 9,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "belts": 1
+}
+Fetched 3 documents in 5ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.update({}, { $rename: {"belts":belts_earned} })
+uncaught exception: ReferenceError: belts_earned is not defined :
+@(shell):1:36
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.update({}, { $rename: {"belts":"belts_earned"} })
+Updated 1 existing document(s) in 4ms
+WriteResult({
+  "nMatched": 1,
+  "nUpserted": 0,
+  "nModified": 1
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> x = 'sss'
+sss
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> x
+sss
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> type(x)
+uncaught exception: ReferenceError: type is not defined :
+@(shell):1:1
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> type of x
+uncaught exception: SyntaxError: unexpected token: 'of' :
+@(shell):1:5
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> typeof(x)
+string
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> print('ffff')
+ffff
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.update({}, { $rename: {"belts":"belts_earned"} }, {multi: true})
+Updated 3 existing document(s) in 5ms
+WriteResult({
+  "nMatched": 3,
+  "nUpserted": 0,
+  "nModified": 2
+})
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db> db.students.find({})
+{
+  "_id": ObjectId("617b42d44d7d8b4aff03759e"),
+  "name": "Elon Musk",
+  "state": "Washington",
+  "lucky_number": 2,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb"
+  ],
+  "belts_earned": 2
+}
+{
+  "_id": ObjectId("617b430a4d7d8b4aff0375a0"),
+  "name": "Max Kayen",
+  "state": "New York",
+  "lucky_number": 1,
+  "birthday": {
+    "month": 8,
+    "day": 2,
+    "year": 1988
+  },
+  "interests": [
+    "coding",
+    "brunch",
+    "mongodb",
+    "baseball"
+  ],
+  "belts_earned": 0
+}
+{
+  "_id": ObjectId("617b45e5bdf4607a999401d7"),
+  "name": "Joe Smith",
+  "state": "Washington",
+  "lucky_number": 9,
+  "birthday": {
+    "month": 4,
+    "day": 4,
+    "year": 1995
+  },
+  "belts_earned": 1
+}
+Fetched 3 documents in 5ms
+Kishan-Patels-MacBook-Pro(mongod-5.0.3) my_first_db>
