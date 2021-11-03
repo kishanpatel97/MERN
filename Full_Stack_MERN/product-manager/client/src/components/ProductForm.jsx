@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ProductForm = () => {
+const ProductForm = (props) => {
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -41,7 +41,7 @@ const ProductForm = () => {
             <div className='form-div'>
                 Price:{' '}
                 <input
-                    type='text'
+                    type='number'
                     onChange={(e) => setPrice(e.target.value)}
                     value={price}
                 />
