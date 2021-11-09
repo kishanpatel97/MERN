@@ -1,12 +1,23 @@
-import React, { useEffect, useState } from 'react';
 import ProductForm from '../components/ProductForm';
+import ProductList from '../components/ProductList';
+import React, { useState } from 'react';
 
-const Main = () => {
-
+const Main = (props) => {
+    const { handleDeleteProduct } = props;
+    const [hasBeenSubmittedDummy, setHasBeenSubmittedDummy] = useState(false);
     return (
-        <div>
-            <ProductForm />
-        </div>
+        <>
+            <ProductForm
+                setHasBeenSubmittedDummy={setHasBeenSubmittedDummy}
+                hasBeenSubmittedDummy={hasBeenSubmittedDummy}
+            />
+            <hr />
+            <ProductList
+                hasBeenSubmittedDummy={hasBeenSubmittedDummy}
+                setHasBeenSubmittedDummy={setHasBeenSubmittedDummy}
+                handleDeleteProduct={handleDeleteProduct}
+            />
+        </>
     );
 };
 

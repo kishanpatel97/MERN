@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../App.css';
 
 const ProductForm = (props) => {
+    const { hasBeenSubmittedDummy, setHasBeenSubmittedDummy } = props;
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
@@ -21,8 +23,14 @@ const ProductForm = (props) => {
 
         //make a post request to create a new person
         axios
-            .post('http://localhost:8000/api/product', newProductData)
-            .then((res) => console.log(res))
+            .post('http://localhost:8000/api/products', newProductData)
+            .then((res) => {
+                console.log(res);
+                setTitle('');
+                setPrice('');
+                setDescription('');
+                setHasBeenSubmittedDummy(!hasBeenSubmittedDummy);
+            })
             .catch((err) => console.log(err));
     };
 
@@ -54,7 +62,7 @@ const ProductForm = (props) => {
                     value={description}
                 />
             </div>
-            <button type='submit'>Submit</button>
+            <input type="submit" />
         </form>
     );
 };
